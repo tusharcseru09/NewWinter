@@ -45,7 +45,7 @@ public class WebServiceCtrl {
 	
 	
 	
-	/***	PRODUCT CATEGORY	***/
+			/***	PRODUCT CATEGORY	***/
 	
 	@Autowired
 	private ProductCategoryService productCategoryService;
@@ -118,7 +118,7 @@ public class WebServiceCtrl {
 	
 	
 	
-	/***	PRODUCT CATEGORY	***/	
+			/***	PRODUCT UOM	***/	
 	
 	@Autowired
 	private ProductUomService productUomServie;
@@ -153,11 +153,48 @@ public class WebServiceCtrl {
 	}
 	
 	
+	@RequestMapping(path="/uom/{id}", method=RequestMethod.DELETE)
+	public ResponseEntity<Object> deleteProductUomObj(@PathVariable("id") Long uomId) {
+		try {
+			productUomServie.deleteProductUomObject(uomId);
+		}catch(Exception e) {
+			return new ResponseEntity<>(e.getMessage(),HttpStatus.CONFLICT);
+		}
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/uom/{id}", method=RequestMethod.PUT)
+	public ResponseEntity<Object> putProductUomObj(@RequestBody @Valid ProductUoM productUoM, @PathVariable("id") Long uomId, BindingResult bindingResult) {
+		
+		Map<String , String> errorMap;
+		
+		if(bindingResult.hasErrors()) {
+			errorMap = new HashMap<>();
+			for (FieldError error : bindingResult.getFieldErrors()) {
+				errorMap.put(error.getField(), error.getDefaultMessage());
+			}
+			return new ResponseEntity<>(errorMap, HttpStatus.NOT_ACCEPTABLE);
+		}
+		
+		try {
+			productUomServie.putProductUomObject(productUoM, uomId);
+		}catch(NotAbleToUpdate e ) {
+			System.out.println(e.getMessage());
+			return new ResponseEntity<>(e.getMessage(),HttpStatus.CONFLICT);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(e.getMessage(),HttpStatus.CONFLICT);
+		}
+		
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
 	
 	
 	
 	
-
+	
+	
+	
 	@RequestMapping(path="/categories/test")
 	public ResponseEntity<Object> testHttpEntity(HttpEntity<ProductCategory> requestEntity) {
 		System.out.println("*****\t Request Body and Header\t*****");

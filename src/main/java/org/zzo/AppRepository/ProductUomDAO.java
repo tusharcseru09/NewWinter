@@ -12,9 +12,9 @@ public interface ProductUomDAO {
 	
 	public List<ProductUoM> getObjectList();
 	
-	//public ProductUoM deleteObject(Long Id) throws  Exception;
+	public Long deleteObject(Long Id) throws  Exception;
 	
-	//public void putObject(ProductCategory productCategory, Long categoryId)  throws NotAbleToUpdate, Exception ;
+	public void putObject(ProductUoM productUoM, Long unitId)  throws NotAbleToUpdate, Exception ;
 	
 	public Long postObject(ProductUoM productUoM);
 	

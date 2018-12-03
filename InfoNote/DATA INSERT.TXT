@@ -1,3 +1,4 @@
+
 { "categoryCode": "Men -S" , "categoryDesc": "Men -S"}
 { "categoryCode": "Men -M" , "categoryDesc": "Men -M"}
 { "categoryCode": "Men -L" , "categoryDesc": "Men -L"}
@@ -10,3 +11,12 @@
 { "categoryCode": "Girls -S" , "categoryDesc": "Girls -S"}
 { "categoryCode": "Girls -M" , "categoryDesc": "Girls -M"}
 { "categoryCode": "Girls -L" , "categoryDesc": "Girls -L"}
+
+
+
+{ "unitKey": "Piece", "unitDescription": "Piece" }
+{ "unitKey": "kg", "unitDescription": "Kilogram" }
+{ "unitKey": "ft", "unitDescription": "Foot" }
+{ "unitKey": "mi", "unitDescription": "Mile" }
+{ "unitKey": "l", "unitDescription": "Liter" }
+{ "unitKey": "gal", "unitDescription": "Gallon" }

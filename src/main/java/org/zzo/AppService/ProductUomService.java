@@ -5,8 +5,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.zzo.AppEntity.product.ProductCategory;
 import org.zzo.AppEntity.product.ProductUoM;
 import org.zzo.AppRepository.ProductUomRepo;
+import org.zzo.ExceptionObject.NotAbleToUpdate;
 
 @Service
 public class ProductUomService {
@@ -40,5 +42,16 @@ public class ProductUomService {
 	public ProductUoM getProductUomObject(Long Id) {
 		return productUomRepo.getObject(Id);
 	}
+	
+	//UPDATE
+	public void putProductUomObject(ProductUoM productUoM, Long uomId) throws NotAbleToUpdate, Exception{
+		productUomRepo.putObject(productUoM,uomId);
+	}
+	
+	//DELETE
+	public void deleteProductUomObject(Long Id) throws  Exception {
+		productUomRepo.deleteObject(Id);
+	}
+	
 	
 }

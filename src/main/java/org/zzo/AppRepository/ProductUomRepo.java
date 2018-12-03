@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.zzo.AppEntity.product.ProductCategory;
@@ -57,19 +58,38 @@ public class ProductUomRepo implements ProductUomDAO {
 		return generatedId;
 	}
 
-	/*
+	//DELETE
 	@Override
-	public ProductUoM deleteObject(Long Id) {
-		// TODO Auto-generated method stub
-		return null;
+	@Transactional
+	public Long deleteObject(Long Id) throws  Exception {
+		String queryStr = "delete from ProductUoM pu where pu.unitId=:unitId";
+		Session session = sessionFactory.getCurrentSession();
+		Query query =  session.createQuery(queryStr);
+		query.setParameter("unitId", Id);
+		long result = query.executeUpdate();
+		System.out.println(result + " row deleted.");
+		return result;
 	}
 
 
-
+	//UPDATE
 	@Override
-	public void putObject(ProductCategory productCategory, Long categoryId) throws NotAbleToUpdate, Exception {
-		// TODO Auto-generated method stub
+	@Transactional
+	public void putObject(ProductUoM productUoM, Long unitId) throws NotAbleToUpdate, Exception {
 		
+		Session session = sessionFactory.getCurrentSession();
+		ProductUoM uomObj = this.getObject(unitId);
+
+		if (uomObj == null ) {
+			 throw new NotAbleToUpdate("Object Not Found With Given Category Id " + unitId + ".");
+		}
+		else if(! uomObj.getUnitId().equals(productUoM.getUnitId())) {
+			throw new NotAbleToUpdate("Object Id [" + productUoM.getUnitId() + "] Not Matched With Given Category Id [" + unitId + "].");
+		}
+		
+		uomObj.setUnitKey(productUoM.getUnitKey()) ;
+		uomObj.setUnitDescription(productUoM.getUnitDescription());
+		session.persist(uomObj);
 	}
-*/
+
 }
