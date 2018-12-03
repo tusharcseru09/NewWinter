@@ -1,0 +1,7 @@
+Methods name for data insert update or delete will as like
+
+		getNameObject
+		PostNameObject
+		PutNameObject
+		DeleteNameObject
+		getNameObjectList

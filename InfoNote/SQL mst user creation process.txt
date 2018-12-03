@@ -1,0 +1,31 @@
+if hibernate not able to create table 
+create manually first 
+=====================================
+CREATE USER mst IDENTIFIED BY mst;
+
+GRANT all privileges TO mst;
+GRANT CREATE TABLE TO mst;
+
+SELECT username, account_status FROM dba_users
+WHERE username = 'mst';
+
+===========================
+
+create table MST_GENDER_MAIN(
+	genderId serial PRIMARY KEY,
+    genderName varchar(100)
+
+);
+drop table MST_GENDER_MAIN
+
+CREATE SEQUENCE seq_company START 1;
+DROP SEQUENCE seq_company;
+
+select * from mst_user_main;
+======================================
+So the list of possible options are,
+
+validate: validate the schema, makes no changes to the database.
+update: update the schema.
+create: creates the schema, destroying previous data.
+create-drop: drop the schema when the SessionFactory is closed explicitly, typically when the application is stopped.

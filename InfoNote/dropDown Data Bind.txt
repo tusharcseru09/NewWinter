@@ -1,0 +1,41 @@
+
+	@RequestMapping(value = "/reg_subject", method = RequestMethod.GET)
+	public String viewSubjectRegForm(Model model) {
+		
+		SubjectInfo subjectInfo = new SubjectInfo();
+		
+		List<PhoneNumber> objList = new ArrayList<PhoneNumber>();
+		
+		for(int i=0; i<10; i++) {
+			PhoneNumber obj = new PhoneNumber();
+			obj.setId(10001L + i);
+			obj.setPhoneNumber("01676784124" + i);
+			objList.add(obj);
+		}
+		
+		model.addAttribute("subjectInfo", subjectInfo);
+		model.addAttribute("objList", objList);
+		return Constants.SUBJECT_REGISTRATION_FORM;
+	}
+
+
+
+	public static final String SUBJECT_REGISTRATION_FORM = "forms_subject_registration";
+
+
+
+
+
+
+										<div class="form-group" >
+											<label for="txtteacherCode" th:object="${objList}"  class="control-label col-sm-2">Phone Number</label>
+											<div class="col-sm-4" >
+												<select name="select123" th:field="*{teacherCode}"   th:id="txtteacherCode" class="form-control">
+													<option value="">Select ...</option>
+													<option th:each="emptyList : ${objList}"
+															th:value="${emptyList.getId()}"
+															th:text="${emptyList.getPhoneNumber()}"><!--  th:selected = "${select123} == *{emptyList.phoneNumber}" -->
+													</option>
+												</select>
+											</div>
+										</div>
