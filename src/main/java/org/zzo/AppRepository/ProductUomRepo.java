@@ -9,7 +9,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.zzo.AppEntity.product.ProductCategory;
 import org.zzo.AppEntity.product.ProductUoM;
+import org.zzo.ExceptionObject.NotAbleToUpdate;
 
 @Repository
 public class ProductUomRepo implements ProductUomDAO {
@@ -17,30 +19,7 @@ public class ProductUomRepo implements ProductUomDAO {
 	@Autowired
 	public SessionFactory sessionFactory;
 	
-	@Override
-	@Transactional
-	public ProductUoM getObject(Long Id) {
-		ProductUoM prodUom = new ProductUoM();
-		Session session = sessionFactory.getCurrentSession();
-		prodUom = session.get(ProductUoM.class, Id);
-		return prodUom;
-	}
-
-	@Override
-	@Transactional
-	public Long postObject(ProductUoM productUoM) {
-		Long generatedId = -1L;
-		Session session = sessionFactory.getCurrentSession();
-		generatedId = (Long) session.save(productUoM);
-		return generatedId;
-	}
-
-	@Override
-	public ProductUoM deleteObject(Long Id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	//RETRIVE ALL
 	@Override
 	@Transactional
 	public List<ProductUoM> getObjectList() {
@@ -57,5 +36,40 @@ public class ProductUomRepo implements ProductUomDAO {
 		
 		return lstProductUoM;
 	}
+	
+	//RETRIVE SINGLE
+	@Override
+	@Transactional
+	public ProductUoM getObject(Long Id) {
+		ProductUoM prodUom = new ProductUoM();
+		Session session = sessionFactory.getCurrentSession();
+		prodUom = session.get(ProductUoM.class, Id);
+		return prodUom;
+	}
 
+	//INSERT
+	@Override
+	@Transactional
+	public Long postObject(ProductUoM productUoM) {
+		Long generatedId = -1L;
+		Session session = sessionFactory.getCurrentSession();
+		generatedId = (Long) session.save(productUoM);
+		return generatedId;
+	}
+
+	/*
+	@Override
+	public ProductUoM deleteObject(Long Id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	@Override
+	public void putObject(ProductCategory productCategory, Long categoryId) throws NotAbleToUpdate, Exception {
+		// TODO Auto-generated method stub
+		
+	}
+*/
 }

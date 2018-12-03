@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Data
@@ -31,6 +33,7 @@ public class ProductUoM {
 	@Column(name="UOM_DESC")
 	private String unitDescription;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="productUoM")
 	private List<ProductDetails> lstProductDetails = new ArrayList<ProductDetails>();
 	

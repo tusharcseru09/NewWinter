@@ -63,7 +63,7 @@ public class WebApplication {
         // the SessionFactory can then be passed to Hibernate-based data access objects via dependency injection.
         LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
  
-        factoryBean.setPackagesToScan(new String[] { "" }); // Package contain entity classes
+        factoryBean.setPackagesToScan(new String[] { "" });
         factoryBean.setDataSource(dataSource);
         factoryBean.setHibernateProperties(properties);
         factoryBean.afterPropertiesSet();

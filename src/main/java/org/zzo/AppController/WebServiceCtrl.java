@@ -22,8 +22,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.zzo.AppEntity.product.ProductCategory;
+import org.zzo.AppEntity.product.ProductUoM;
 import org.zzo.AppService.ProductCategoryService;
 import org.zzo.AppService.ProductPriceTableServie;
+import org.zzo.AppService.ProductUomService;
 import org.zzo.AppTable.ProductPriceTable;
 import org.zzo.ExceptionObject.NotAbleToUpdate;
 
@@ -43,7 +45,8 @@ public class WebServiceCtrl {
 	
 	
 	
-
+	/***	PRODUCT CATEGORY	***/
+	
 	@Autowired
 	private ProductCategoryService productCategoryService;
 	
@@ -115,10 +118,39 @@ public class WebServiceCtrl {
 	
 	
 	
+	/***	PRODUCT CATEGORY	***/	
 	
+	@Autowired
+	private ProductUomService productUomServie;
 	
+	@RequestMapping(path="/uom", method=RequestMethod.GET)
+	public List<ProductUoM> getProductUomList(){
+		return productUomServie.getProductUomObjectList();
+	}
 	
+	@RequestMapping(path="/uom/{id}", method=RequestMethod.GET)
+	public ProductUoM getProductUomObj(@PathVariable("id") Long uomId) {
+		return productUomServie.getProductUomObject(uomId);
+	}
 	
+	@RequestMapping(value="/uom", method=RequestMethod.POST)
+	public ResponseEntity<Object> postProductUomObj(@RequestBody @Valid ProductUoM productUoM, BindingResult bindingResult) {
+		
+		Map<String , String> errorMap;
+		if(bindingResult.hasErrors()) {
+			errorMap = new HashMap<>();
+			for (FieldError error : bindingResult.getFieldErrors()) {
+				errorMap.put(error.getField(), error.getDefaultMessage());
+			}
+			return new ResponseEntity<>(errorMap, HttpStatus.NOT_ACCEPTABLE);	
+		}
+		
+		Long createdId = productUomServie.postProductUomObject(productUoM);
+		if(createdId >= 0)
+			return new ResponseEntity<> (createdId,HttpStatus.OK);
+		else
+			return new ResponseEntity<> (HttpStatus.CONFLICT);
+	}
 	
 	
 	
