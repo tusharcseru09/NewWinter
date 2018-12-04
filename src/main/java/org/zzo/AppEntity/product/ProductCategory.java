@@ -27,13 +27,13 @@ public class ProductCategory {
 	private Long categoryId;
 	
 	
-	@Column(name="CATEGORY_CODE")
+	@Column(name="CATEGORY_CODE", unique = true)
 	@NotBlank(message=ErrorMessages.PRODUCT_CATEGORY_CODE_NOTBLANK)
 	@Size(min=ErrorMessages.CATEGORY_CODE_MIN_LEN, message=ErrorMessages.PRODUCT_CATETORY_CODE_SIZE)
 	private String categoryCode;
 	
 	
-	@Column(name="CATEGORY_DESC")
+	@Column(name="CATEGORY_DESC", unique = true)
 	@NotBlank(message=ErrorMessages.PRODUCT_CATETORY_DESC_NOTBLANK)
 	@Size(min=ErrorMessages.CATEGORY_DESC_MIN_LEN, message=ErrorMessages.PRODUCT_CATETORY_DESC_SIZE)
 	private String categoryDesc;

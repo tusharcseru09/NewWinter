@@ -11,6 +11,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+import org.zzo.StaticContent.ErrorMessages;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -27,10 +31,14 @@ public class ProductUoM {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="hbm_ProductUomId")
 	private Long unitId;
 	
-	@Column(name="UOM_KEY")
+	@Column(name="UOM_KEY", unique = true)
+	@NotBlank(message=ErrorMessages.PRODUCT_UOM_KEY_NOTBLANK)
+	@Size(min=ErrorMessages.UOM_KEY_MIN_LEN, message=ErrorMessages.PRODUCT_UOM_KEY_SIZE)
 	private String unitKey;
 	
-	@Column(name="UOM_DESC")
+	@Column(name="UOM_DESC", unique = true)
+	@NotBlank(message=ErrorMessages.PRODUCT_UOM_DESC_NOTBLANK)
+	@Size(min=ErrorMessages.UOM_DESC_MIN_LEN, message=ErrorMessages.PRODUCT_UOM_DESC_SIZE)
 	private String unitDescription;
 	
 	@JsonIgnore
