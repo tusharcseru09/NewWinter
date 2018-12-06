@@ -1,13 +1,10 @@
 package org.zzo.AppController;
 
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale.LanguageRange;
 import java.util.Map;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -23,18 +20,50 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.zzo.AppEntity.product.ProductCategory;
 import org.zzo.AppEntity.product.ProductDetails;
+import org.zzo.AppEntity.product.ProductPrice;
 import org.zzo.AppEntity.product.ProductUoM;
 import org.zzo.AppService.ProductCategoryService;
 import org.zzo.AppService.ProductDetailsService;
+import org.zzo.AppService.ProductPriceService;
 import org.zzo.AppService.ProductUomService;
 import org.zzo.ExceptionObject.NotAbleToUpdate;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 @RestController
 public class WebServiceCtrl {
 
+	
+	
+	@Autowired
+	private ProductPriceService productPriceService;
+	
+	@RequestMapping(path="/price", method=RequestMethod.GET)
+	public List<ProductPrice> getProductPriceList(){
+		return productPriceService.getProductPriceObjectList();
+	}
+	
+	@RequestMapping(value="/price", method=RequestMethod.POST)
+	public ResponseEntity<Object> postProductPriceObj(@RequestBody @Valid ProductPrice productPrice, BindingResult bindingResult) {
+		
+		Map<String , String> errorMap;
+		if(bindingResult.hasErrors()) {
+			errorMap = new HashMap<>();
+			for (FieldError error : bindingResult.getFieldErrors()) {
+				errorMap.put(error.getField(), error.getDefaultMessage());
+			}
+			return new ResponseEntity<>(errorMap, HttpStatus.NOT_ACCEPTABLE);	
+		}
+		
+		Long createdId = productPriceService.postProductPriceObject(productPrice);
+		if(createdId >= 0)
+			return new ResponseEntity<> (createdId,HttpStatus.OK);
+		else
+			return new ResponseEntity<> (HttpStatus.CONFLICT);
+	}
+	
+	
+			/***	PRODUCT Details	***/
 	
 	@Autowired
 	private ProductDetailsService productDetailsService;
@@ -58,7 +87,7 @@ public class WebServiceCtrl {
 			return new ResponseEntity<>(errorMap, HttpStatus.NOT_ACCEPTABLE);	
 		}
 		
-		Long createdId = productDetailsService.PostProductDetailsObject(productDetails);
+		Long createdId = productDetailsService.postProductDetailsObject(productDetails);
 		if(createdId >= 0)
 			return new ResponseEntity<> (createdId,HttpStatus.OK);
 		else
@@ -220,11 +249,7 @@ public class WebServiceCtrl {
 	}
 	
 	
-	
-	
-	
-	
-	
+
 	@RequestMapping(path="/categories/test")
 	public ResponseEntity<Object> testHttpEntity(HttpEntity<ProductCategory> requestEntity) {
 		System.out.println("*****\t Request Body and Header\t*****");

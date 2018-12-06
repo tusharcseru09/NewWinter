@@ -5,10 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.zzo.AppEntity.product.ProductCategory;
 import org.zzo.AppEntity.product.ProductDetails;
-import org.zzo.AppEntity.product.ProductUoM;
-import org.zzo.AppForm.ProductDetailsForm;
 import org.zzo.AppRepository.ProductCategoryRepo;
 import org.zzo.AppRepository.ProductDetailsRepo;
 import org.zzo.AppRepository.ProductUomRepo;
@@ -18,14 +15,7 @@ import org.zzo.AppRepository.ProductUomRepo;
 public class ProductDetailsService {
 	
 	@Autowired
-	private ProductUomRepo productUomRepo;
-	
-	@Autowired
-	private ProductCategoryRepo productCategoryRepo;
-	
-	@Autowired
 	private ProductDetailsRepo productDetailsRepo ;
-
 
 	
 	public List<ProductDetails> getProductDetailsObjectList(){
@@ -34,7 +24,7 @@ public class ProductDetailsService {
 		return lstProductDetails;
 	}
 	
-	public Long PostProductDetailsObject(ProductDetails productDetails) {
+	public Long postProductDetailsObject(ProductDetails productDetails) {
 		Long createdId = productDetailsRepo.postObject(productDetails);
 		return createdId;
 	}

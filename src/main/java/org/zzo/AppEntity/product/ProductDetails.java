@@ -1,6 +1,10 @@
 package org.zzo.AppEntity.product;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,11 +12,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import org.zzo.StaticContent.ErrorMessages;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Data
@@ -66,4 +74,9 @@ public class ProductDetails implements Serializable{
 	@OneToMany(mappedBy="productDetails",cascade=CascadeType.ALL)
 	private List<ProductPrice> lstProductPrice = new ArrayList<ProductPrice>();
 	*/
+	
+	@JsonIgnore
+	@OneToMany(mappedBy="productId", cascade=CascadeType.ALL)
+	private List<ProductPrice> lstProductDetails = new ArrayList<ProductPrice>();
+
 }

@@ -1,5 +1,8 @@
 package org.zzo.AppService;
-/*
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.zzo.AppController.StaticMembers;
@@ -14,10 +17,20 @@ public class ProductPriceService {
 
 	@Autowired 
 	private ProductPriceRepo productPriceRepo;
+		
 	
-	@Autowired
-	private ProductDetailsRepo productDetailsRepo;
+	public List<ProductPrice> getProductPriceObjectList(){
+		List<ProductPrice> lstProductPrice = new ArrayList<ProductPrice>();
+		lstProductPrice = productPriceRepo.getObjectList();
+		return lstProductPrice;
+	}
 	
+	public Long postProductPriceObject(ProductPrice productPrice) {
+		Long createdId = productPriceRepo.postObject(productPrice);
+		return createdId;
+	}
+	
+	/*
 	public Long PostProductPriceObject(ProductPriceForm productPriceForm) {
 		
 		Long generatedId = -1L;
@@ -38,5 +51,5 @@ public class ProductPriceService {
 		
 		return generatedId;
 	}
+	*/
 }
-*/
