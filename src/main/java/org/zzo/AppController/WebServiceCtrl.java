@@ -22,25 +22,49 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.zzo.AppEntity.product.ProductCategory;
+import org.zzo.AppEntity.product.ProductDetails;
 import org.zzo.AppEntity.product.ProductUoM;
 import org.zzo.AppService.ProductCategoryService;
-import org.zzo.AppService.ProductPriceTableServie;
+import org.zzo.AppService.ProductDetailsService;
 import org.zzo.AppService.ProductUomService;
-import org.zzo.AppTable.ProductPriceTable;
 import org.zzo.ExceptionObject.NotAbleToUpdate;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 @RestController
 public class WebServiceCtrl {
 
 	
 	@Autowired
-	private ProductPriceTableServie productPriceTableServie;
+	private ProductDetailsService productDetailsService;
 	
 	
 	@RequestMapping(path="/products", method=RequestMethod.GET)
-	public List<ProductPriceTable> getProductPriceInfo(){
-		return productPriceTableServie.getProductPriceObjectList();
+	public List<ProductDetails> getProductDetailsList(){
+		return productDetailsService.getProductDetailsObjectList();
 	}
+	
+	
+	@RequestMapping(value="/products", method=RequestMethod.POST)
+	public ResponseEntity<Object> postProductDetailsObj(@RequestBody @Valid ProductDetails productDetails, BindingResult bindingResult) {
+		
+		Map<String , String> errorMap;
+		if(bindingResult.hasErrors()) {
+			errorMap = new HashMap<>();
+			for (FieldError error : bindingResult.getFieldErrors()) {
+				errorMap.put(error.getField(), error.getDefaultMessage());
+			}
+			return new ResponseEntity<>(errorMap, HttpStatus.NOT_ACCEPTABLE);	
+		}
+		
+		Long createdId = productDetailsService.PostProductDetailsObject(productDetails);
+		if(createdId >= 0)
+			return new ResponseEntity<> (createdId,HttpStatus.OK);
+		else
+			return new ResponseEntity<> (HttpStatus.CONFLICT);
+	}
+	
 	
 	
 	
@@ -54,6 +78,7 @@ public class WebServiceCtrl {
 	public List<ProductCategory> getProductCategoryList(){
 		return productCategoryService.getProductCategoryObjectList();
 	}
+	
 	@RequestMapping(path="/categories/{id}", method=RequestMethod.GET)
 	public ProductCategory getProductCategoryObj(@PathVariable("id") Long categoryId) {
 		return productCategoryService.getProductCategoryObject(categoryId);
@@ -144,6 +169,11 @@ public class WebServiceCtrl {
 			}
 			return new ResponseEntity<>(errorMap, HttpStatus.NOT_ACCEPTABLE);	
 		}
+		
+		
+		Gson gsonBuilder = new GsonBuilder().create();
+		String jsonFromPojo = gsonBuilder.toJson(productUoM);
+		System.out.println(jsonFromPojo);
 		
 		Long createdId = productUomServie.postProductUomObject(productUoM);
 		if(createdId >= 0)

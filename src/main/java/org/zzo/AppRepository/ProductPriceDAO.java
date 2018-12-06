@@ -1,5 +1,5 @@
 package org.zzo.AppRepository;
-
+/*
 import java.util.List;
 
 import org.zzo.AppEntity.product.ProductPrice;
@@ -16,3 +16,4 @@ public interface ProductPriceDAO {
 	public List<ProductPrice> getObjectList();
 	
 }
+*/

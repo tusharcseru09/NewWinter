@@ -1,5 +1,5 @@
 package org.zzo.AppService;
-
+/*
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.zzo.AppController.StaticMembers;
@@ -39,3 +39,4 @@ public class ProductPriceService {
 		return generatedId;
 	}
 }
+*/

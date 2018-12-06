@@ -20,3 +20,37 @@
 { "unitKey": "mi", "unitDescription": "Mile" }
 { "unitKey": "l", "unitDescription": "Liter" }
 { "unitKey": "gal", "unitDescription": "Gallon" }
+
+
+
+[
+    {  "productCode": "EDMEN", "productName": "New Brand Shirt", "productDesc": "Formal T Shirt",
+        "productUoM": { "unitId": 1, "unitKey": "Piece", "unitDescription": "Piece" },
+        "productCategory": { "categoryId": 1, "categoryCode": "Men -S", "categoryDesc": "Men -S" },
+        "taxAble": true, "productComment": "no comments"
+    },
+    {  "productCode": "EDMEN-1", "productName": "New Brand Shirt-1", "productDesc": "Formal T Shirt-1",
+        "productUoM": { "unitId": 1, "unitKey": "Piece", "unitDescription": "Piece" },
+        "productCategory": { "categoryId": 2, "categoryCode": "Men -M", "categoryDesc": "Men -M" },
+        "taxAble": false, "productComment": "no comments-1"
+    },
+    { "productCode": "EDMEN-11", "productName": "New Brand Shirt-11", "productDesc": "Formal T Shirt-11",
+        "productUoM": { "unitId": 1, "unitKey": "Piece", "unitDescription": "Piece" },
+        "productCategory": { "categoryId": 2,  "categoryCode": "Men -M", "categoryDesc": "Men -M"  },
+        "taxAble": false, "productComment": "no comments-1"
+    }
+]
+Also valid format is 
+  {
+		"productCode": "EDMEN-11",
+        "productName": "New Brand Shirt-11",
+        "productDesc": "Formal T Shirt-11",
+        "productUoM": {
+            "unitId": 1
+        },
+        "productCategory": {
+            "categoryId": 2
+        },
+        "taxAble": false,
+        "productComment": "no comments-1"
+    }

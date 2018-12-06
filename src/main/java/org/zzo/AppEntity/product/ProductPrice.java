@@ -1,5 +1,5 @@
 package org.zzo.AppEntity.product;
-
+/*
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -24,9 +24,11 @@ public class ProductPrice {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="hbm_ProductPriceId")
 	private Long priceId;
 	
+	
 	@ManyToOne
 	@JoinColumn(name="PRODUCT_CODE")
 	private ProductDetails productDetails;
+	
 	
 	@Column(name="PURCHASE_PRICE")
 	private Double purchasePrice;
@@ -45,4 +47,4 @@ public class ProductPrice {
 	
 	@Column(name="USER_COMMENT")
 	private String comment;
-}	
+}	*/

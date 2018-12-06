@@ -1,5 +1,5 @@
 package org.zzo.AppRepository;
-
+/*
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -45,3 +45,4 @@ public class ProductPriceRepo implements ProductPriceDAO{
 	}
 
 }
+*/

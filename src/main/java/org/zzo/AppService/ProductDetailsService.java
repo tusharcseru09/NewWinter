@@ -13,15 +13,19 @@ import org.zzo.AppRepository.ProductCategoryRepo;
 import org.zzo.AppRepository.ProductDetailsRepo;
 import org.zzo.AppRepository.ProductUomRepo;
 
+
 @Service
 public class ProductDetailsService {
 	
 	@Autowired
+	private ProductUomRepo productUomRepo;
+	
+	@Autowired
 	private ProductCategoryRepo productCategoryRepo;
+	
 	@Autowired
 	private ProductDetailsRepo productDetailsRepo ;
-	@Autowired
-	private ProductUomRepo productUomRepo;
+
 
 	
 	public List<ProductDetails> getProductDetailsObjectList(){
@@ -30,6 +34,12 @@ public class ProductDetailsService {
 		return lstProductDetails;
 	}
 	
+	public Long PostProductDetailsObject(ProductDetails productDetails) {
+		Long createdId = productDetailsRepo.postObject(productDetails);
+		return createdId;
+	}
+	
+	/*
 	public Long PostProductObject(ProductDetailsForm productDetailsForm) {
 		
 		ProductDetails productDetails = new ProductDetails();
@@ -57,5 +67,5 @@ public class ProductDetailsService {
 		Long generatedId = productDetailsRepo.postObject(productDetails);
 		return generatedId;
 	}
-	
+	*/
 }
