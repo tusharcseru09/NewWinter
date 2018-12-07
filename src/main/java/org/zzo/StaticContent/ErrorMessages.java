@@ -7,7 +7,9 @@ public class ErrorMessages {
 	public static final int CATEGORY_CODE_MIN_LEN = 3;
 	public static final int CATEGORY_DESC_MIN_LEN = 3;
 	public static final String PRODUCT_CATEGORY_CODE_NOTBLANK = "Empty value not allowed";
+	public static final String PRODUCT_CATEGORY_CODE_NOTNULL = "Null value not allowed";
 	public static final String PRODUCT_CATETORY_DESC_NOTBLANK = "Empty value not allowed";
+	public static final String PRODUCT_CATETORY_DESC_NOTNULL = "Null value not allowed";
 	public static final String PRODUCT_CATETORY_CODE_SIZE = "Character length must be " + CATEGORY_CODE_MIN_LEN + " or above";
 	public static final String PRODUCT_CATETORY_DESC_SIZE = "Character length must be " + CATEGORY_DESC_MIN_LEN + " or above";
 	
@@ -28,8 +30,12 @@ public class ErrorMessages {
 	public static final String PRODUCT_CODE_NOTBLANK = "Empty value not allowed";
 	public static final String PRODUCT_NAME_NOTBLANK = "Empty value not allowed";
 	public static final String PRODUCT_DESC_NOTBLANK = "Empty value not allowed";
+	public static final String PRODUCT_UNIT_NOTNULL = "Null value not allowed";
+	public static final String PRODUCT_CATEGORY_NOTNULL = "Null value not allowed";
 	public static final String PRODUCT_CODE_SIZE = "Character length must be " + PRODUCT_CODE_MIN_LEN + " or above";
 	public static final String PRODUCT_NAME_SIZE = "Character length must be " + PRODUCT_NAME_MIN_LEN + " or above";
 	public static final String PRODUCT_DESC_SIZE = "Character length must be " + PRODUCT_DESC_MIN_LEN + " or above";
+	
+	public static final String PRODUCT_PRICE_NOTNULL = "Null value not allowed";
 	
 }

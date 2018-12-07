@@ -33,7 +33,10 @@ import com.google.gson.GsonBuilder;
 @RestController
 public class WebServiceCtrl {
 
-	
+	@RequestMapping(path="/test", method=RequestMethod.GET)
+	public String testMethod(){
+		return null;
+	}
 	
 	@Autowired
 	private ProductPriceService productPriceService;
@@ -84,6 +87,7 @@ public class WebServiceCtrl {
 			for (FieldError error : bindingResult.getFieldErrors()) {
 				errorMap.put(error.getField(), error.getDefaultMessage());
 			}
+			System.out.println("Got Product Post Error");
 			return new ResponseEntity<>(errorMap, HttpStatus.NOT_ACCEPTABLE);	
 		}
 		

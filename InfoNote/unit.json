@@ -1,0 +1,8 @@
+[
+{ "unitKey": "Piece", "unitDescription": "Piece" },
+{ "unitKey": "kg", "unitDescription": "Kilogram" },
+{ "unitKey": "ft", "unitDescription": "Foot" },
+{ "unitKey": "mi", "unitDescription": "Mile" },
+{ "unitKey": "l", "unitDescription": "Liter" },
+{ "unitKey": "gal", "unitDescription": "Gallon" }
+]
