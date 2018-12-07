@@ -1,7 +1,5 @@
 package org.zzo.AppController;
 
-
-
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -11,9 +9,13 @@ import java.time.format.DateTimeParseException;
 import java.util.Date;
 
 
-
-
 public class StaticMembers {
+	
+	
+	
+	
+	
+	
 	
 	/*public static void main(String[] args) {
 		LocalDateTime localDateTime = LocalDateTime.now();

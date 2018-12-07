@@ -1,0 +1,36 @@
+[
+
+{ 
+"productCode": "EDMEN1", 
+"productName": "New Brand Shirt-1", 
+"productDesc": "Formal T Shirt-1",
+"productUoM": { "unitId": 1 },
+"productCategory": { "categoryId": 1 },
+"taxAble": true, 
+"productComment": "no comments"
+},
+
+{ 
+"productCode": "EDMEN2", 
+"productName": "New Brand Shirt-2", 
+"productDesc": "Formal T Shirt-2",
+"productUoM": { "unitId": 2 },
+"productCategory": { "categoryId": 2 },
+"productComment": "no comments"
+},
+
+{ 
+"productCode": "EDMEN3", 
+"productName": "New Brand Shirt-3", 
+"productDesc": "Formal T Shirt-3",
+"productUoM": { "unitId": 3 },
+"productCategory": { "categoryId": 3 },
+"taxAble": true, 
+"productComment": "no comments"
+}
+
+
+]
+
+
+

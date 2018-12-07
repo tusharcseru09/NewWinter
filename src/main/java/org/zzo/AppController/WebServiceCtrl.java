@@ -1,5 +1,6 @@
 package org.zzo.AppController;
 
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale.LanguageRange;
@@ -19,90 +20,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.zzo.AppEntity.product.ProductCategory;
-import org.zzo.AppEntity.product.ProductDetails;
-import org.zzo.AppEntity.product.ProductPrice;
 import org.zzo.AppEntity.product.ProductUoM;
 import org.zzo.AppService.ProductCategoryService;
-import org.zzo.AppService.ProductDetailsService;
-import org.zzo.AppService.ProductPriceService;
 import org.zzo.AppService.ProductUomService;
 import org.zzo.ExceptionObject.NotAbleToUpdate;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 @RestController
 public class WebServiceCtrl {
 
-	@RequestMapping(path="/test", method=RequestMethod.GET)
-	public String testMethod(){
-		return null;
-	}
-	
-	@Autowired
-	private ProductPriceService productPriceService;
-	
-	@RequestMapping(path="/price", method=RequestMethod.GET)
-	public List<ProductPrice> getProductPriceList(){
-		return productPriceService.getProductPriceObjectList();
-	}
-	
-	@RequestMapping(value="/price", method=RequestMethod.POST)
-	public ResponseEntity<Object> postProductPriceObj(@RequestBody @Valid ProductPrice productPrice, BindingResult bindingResult) {
-		
-		Map<String , String> errorMap;
-		if(bindingResult.hasErrors()) {
-			errorMap = new HashMap<>();
-			for (FieldError error : bindingResult.getFieldErrors()) {
-				errorMap.put(error.getField(), error.getDefaultMessage());
-			}
-			return new ResponseEntity<>(errorMap, HttpStatus.NOT_ACCEPTABLE);	
-		}
-		
-		Long createdId = productPriceService.postProductPriceObject(productPrice);
-		if(createdId >= 0)
-			return new ResponseEntity<> (createdId,HttpStatus.OK);
-		else
-			return new ResponseEntity<> (HttpStatus.CONFLICT);
-	}
-	
-	
-			/***	PRODUCT Details	***/
-	
-	@Autowired
-	private ProductDetailsService productDetailsService;
-	
-	
-	@RequestMapping(path="/products", method=RequestMethod.GET)
-	public List<ProductDetails> getProductDetailsList(){
-		return productDetailsService.getProductDetailsObjectList();
-	}
-	
-	
-	@RequestMapping(value="/products", method=RequestMethod.POST)
-	public ResponseEntity<Object> postProductDetailsObj(@RequestBody @Valid ProductDetails productDetails, BindingResult bindingResult) {
-		
-		Map<String , String> errorMap;
-		if(bindingResult.hasErrors()) {
-			errorMap = new HashMap<>();
-			for (FieldError error : bindingResult.getFieldErrors()) {
-				errorMap.put(error.getField(), error.getDefaultMessage());
-			}
-			System.out.println("Got Product Post Error");
-			return new ResponseEntity<>(errorMap, HttpStatus.NOT_ACCEPTABLE);	
-		}
-		
-		Long createdId = productDetailsService.postProductDetailsObject(productDetails);
-		if(createdId >= 0)
-			return new ResponseEntity<> (createdId,HttpStatus.OK);
-		else
-			return new ResponseEntity<> (HttpStatus.CONFLICT);
-	}
-	
-	
-	
-	
-	
-			/***	PRODUCT CATEGORY	***/
+	//	##	productCategory	##	
 	
 	@Autowired
 	private ProductCategoryService productCategoryService;
@@ -173,10 +102,7 @@ public class WebServiceCtrl {
 	}
 	
 	
-	
-	
-	
-			/***	PRODUCT UOM	***/	
+
 	
 	@Autowired
 	private ProductUomService productUomServie;
@@ -287,27 +213,6 @@ public class WebServiceCtrl {
 		return new ResponseEntity<>(map,HttpStatus.NOT_ACCEPTABLE);
 		
 	}
-	
-	
-	
-// Header: {host=[localhost:8888], connection=[keep-alive], cache-control=[no-cache], user-agent=[Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36], postman-token=[e29801fa-13f9-097b-d076-3d8404c76603], accept=[* / *], accept-encoding=[gzip, deflate, br], accept-language=[en-US,en;q=0.9]}
-// Body: null
-// Obj name: org.springframework.http.HttpEntity
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 }
