@@ -2,9 +2,7 @@ package org.zzo.AppRepository;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.transaction.Transactional;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +16,7 @@ public class ProductDetailsRepo implements ProductDetailsDAO{
 
 	@Autowired
 	public SessionFactory sessionFactory;
-
 	
-	
-	//RETRIVE SINGLE
 	@Override
 	@Transactional
 	public ProductDetails getObject(Long Id) {
@@ -30,14 +25,11 @@ public class ProductDetailsRepo implements ProductDetailsDAO{
 		productDetails = session.get(ProductDetails.class, Id);
 		return productDetails;
 	}
-	
-	
-	
-	//RETRIVE ALL
+
 	@Override
 	@Transactional
 	public List<ProductDetails> getObjectList() {
-		
+
 		String query = "from ProductDetails";
 		Session session = sessionFactory.getCurrentSession();
 		List<ProductDetails> lstProductDetails = new ArrayList<ProductDetails>();
@@ -51,48 +43,21 @@ public class ProductDetailsRepo implements ProductDetailsDAO{
 		return lstProductDetails;
 	}
 
-	
-	
-	
-	
 	@Override
 	@Transactional
 	public Long deleteObject(Long Id) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	@Transactional
-	public void putObject(ProductDetails productDetails, Long unitId) throws NotAbleToUpdate, Exception {
-		// TODO Auto-generated method stub
 		
-	}
-
-	
-	//INSERT
-	@Override
-	@Transactional
-	public Long postObject(ProductDetails productDetails) {
-		Long generatedId = -1L;
-		Session session = sessionFactory.getCurrentSession();
-		generatedId = (Long) session.save(productDetails);
-		return generatedId;
-	}
-
-
-	
-	
-	/*
-	@Override
-	@Transactional
-	public ProductDetails getObject(Long Id) {
+		Long result= -1L;
 		ProductDetails productDetails = new ProductDetails();
 		Session session = sessionFactory.getCurrentSession();
 		productDetails = session.get(ProductDetails.class, Id);
-		return productDetails;
+		result = productDetails.getProductId();
+		
+		if(productDetails != null) {
+			session.delete(productDetails);
+		}
+		return result != -1 ? result : -1L;
 	}
-
 
 	@Override
 	@Transactional
@@ -101,32 +66,31 @@ public class ProductDetailsRepo implements ProductDetailsDAO{
 		Session session = sessionFactory.getCurrentSession();
 		generatedId = (Long) session.save(productDetails);
 		return generatedId;
-	}
-
-
-	@Override
-	public ProductDetails deleteObject(Long Id) {
-		return null;
-	}
-
-
+	}	
+	
 	@Override
 	@Transactional
-	public List<ProductDetails> getObjectList() {
-			
-		String query = "from ProductDetails";
-		Session session = sessionFactory.getCurrentSession();
-		List<ProductDetails> lstProductDetails = new ArrayList<ProductDetails>();
+	public void putObject(ProductDetails productDetails, Long productId) throws NotAbleToUpdate, Exception {
 		
-		List<?> list = session.createQuery(query).list();
+		Session session = sessionFactory.getCurrentSession();
+		ProductDetails requestedProductDetails = this.getObject(productId);
 
-		for(int i=0; i  < list.size(); i++) {
-			ProductDetails productDetails = (ProductDetails)list.get(i);
-			lstProductDetails.add(productDetails);
-		}	
-
-		return lstProductDetails;
+		if (requestedProductDetails == null ) {
+			 throw new NotAbleToUpdate("Data not found with given Id " + productId + ".");
+		}
+		else if(! requestedProductDetails.getProductId().equals(productDetails.getProductId())) {
+			throw new NotAbleToUpdate("Object id and url id not matched.");
+		}
+		
+		requestedProductDetails.setProductCode(productDetails.getProductCode());
+		requestedProductDetails.setProductName(productDetails.getProductName());
+		requestedProductDetails.setProductDesc(productDetails.getProductDesc());
+		requestedProductDetails.setProductUoM(productDetails.getProductUoM());
+		requestedProductDetails.setProductCategory(productDetails.getProductCategory());
+		requestedProductDetails.setTaxAble(productDetails.getTaxAble());
+		requestedProductDetails.setProductComment(productDetails.getProductComment());
+	
+		session.persist(requestedProductDetails);
 	}
 
-*/
 }

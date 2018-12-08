@@ -17,5 +17,4 @@ public interface ProductDetailsDAO {
 	
 	public Long postObject(ProductDetails productDetails);
 	
-	
 }
