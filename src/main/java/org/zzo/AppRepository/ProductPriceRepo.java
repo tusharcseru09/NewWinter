@@ -7,9 +7,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.zzo.AppEntity.product.ProductCategory;
 import org.zzo.AppEntity.product.ProductPrice;
 import org.zzo.ExceptionObject.NotAbleToUpdate;
+
 
 @Repository
 public class ProductPriceRepo implements ProductPriceDAO{
@@ -18,9 +18,43 @@ public class ProductPriceRepo implements ProductPriceDAO{
 	private SessionFactory sessionFactory;
 
 	@Override
+	@Transactional
 	public ProductPrice getObject(Long Id) {
-		// TODO Auto-generated method stub
-		return null;
+		ProductPrice productPrice = new ProductPrice();
+		Session session = sessionFactory.getCurrentSession();
+		productPrice = session.get(ProductPrice.class, Id);
+		return productPrice;
+	}
+
+	@Override
+	@Transactional
+	public List<ProductPrice> getObjectList() {
+		
+		String query = "from ProductPrice";
+		Session session = sessionFactory.getCurrentSession();
+		List<ProductPrice> lstProductPrice = new ArrayList<ProductPrice>();
+		
+		List<?> objList = session.createQuery(query).list();
+		for(int i=0; i<objList.size(); i++) {
+			ProductPrice productPrice = (ProductPrice)objList.get(i);
+			lstProductPrice.add(productPrice);
+		}
+		return lstProductPrice;
+	}
+
+	@Override
+	@Transactional
+	public Long deleteObject(Long Id) throws Exception {
+		Long result= -1L;
+		ProductPrice productPrice = new ProductPrice();
+		Session session = sessionFactory.getCurrentSession();
+		productPrice = session.get(ProductPrice.class, Id);
+		
+		if(productPrice != null) {
+			result = productPrice.getPriceId();
+			session.delete(productPrice);
+		}
+		return result != -1 ? result : -1L;
 	}
 
 	@Override
@@ -31,35 +65,28 @@ public class ProductPriceRepo implements ProductPriceDAO{
 		generatedId = (Long) session.save(productPrice);
 		return generatedId;
 	}
-
+	
+	
 	@Override
 	@Transactional
-	public List<ProductPrice> getObjectList() {
-		String query = "from ProductPrice";
+	public void putObject(ProductPrice productPrice, Long priceId) throws NotAbleToUpdate, Exception {
 		Session session = sessionFactory.getCurrentSession();
+		ProductPrice requestedProductPrice = this.getObject(priceId);
+
+		if (requestedProductPrice == null ) {
+			 throw new NotAbleToUpdate("Data not found with given Id " + priceId + ".");
+		}
+		else if(! requestedProductPrice.getPriceId().equals(productPrice.getPriceId())) {
+			throw new NotAbleToUpdate("Object id and url id not matched.");
+		}
 		
-		List<ProductPrice> lstProductPrice = new ArrayList<ProductPrice>();
-		List<?> list = session.createQuery(query).list();
+		requestedProductPrice.setProductDetails(productPrice.getProductDetails());
+		requestedProductPrice.setPurchasePrice(productPrice.getPurchasePrice());
+		requestedProductPrice.setSalePrice(productPrice.getSalePrice());
+		requestedProductPrice.setActivationDate(productPrice.getActivationDate());
+		requestedProductPrice.setComment(productPrice.getComment());
 		
-		for(int i=0; i < list.size(); i++) {
-			ProductPrice productPrice = (ProductPrice)list.get(i);
-			lstProductPrice.add(productPrice);
-			
-		}	
-		return lstProductPrice;
+		session.persist(requestedProductPrice);
+
 	}
-
-	@Override
-	public Long deleteObject(Long Id) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void putObject(ProductPrice productPrice, Long unitId) throws NotAbleToUpdate, Exception {
-		// TODO Auto-generated method stub
-		
-	}
-
-
 }

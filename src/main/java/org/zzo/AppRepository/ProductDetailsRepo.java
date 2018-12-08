@@ -51,9 +51,9 @@ public class ProductDetailsRepo implements ProductDetailsDAO{
 		ProductDetails productDetails = new ProductDetails();
 		Session session = sessionFactory.getCurrentSession();
 		productDetails = session.get(ProductDetails.class, Id);
-		result = productDetails.getProductId();
 		
 		if(productDetails != null) {
+			result = productDetails.getProductId();
 			session.delete(productDetails);
 		}
 		return result != -1 ? result : -1L;

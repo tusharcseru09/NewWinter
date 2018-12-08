@@ -10,13 +10,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import org.zzo.StaticContent.ErrorMessages;
+import javax.persistence.UniqueConstraint;
 import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "PRODUCT_PRICE_MAIN")
+@Table( name = "PRODUCT_PRICE_MAIN", uniqueConstraints = @UniqueConstraint(
+		columnNames= {"PRODUCT_ID", "PURCHASE_PRICE", "SALES_PRICE", "ACTIVATION_DATE"} ) )
 public class ProductPrice {
 	
 	
@@ -27,7 +27,6 @@ public class ProductPrice {
 	
 	
 	@ManyToOne
-	@NotNull(message=ErrorMessages.PRODUCT_PRICE_NOTNULL)
 	@JoinColumn(name="PRODUCT_ID", nullable = false)
 	private ProductDetails productDetails;
 

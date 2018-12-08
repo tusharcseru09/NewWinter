@@ -13,8 +13,8 @@ public interface ProductPriceDAO {
 	
 	public Long deleteObject(Long Id) throws  Exception;
 	
-	public void putObject(ProductPrice productPrice, Long unitId)  throws NotAbleToUpdate, Exception ;
+	public void putObject(ProductPrice productPrice, Long priceId)  throws NotAbleToUpdate, Exception ;
 	
-	public Long postObject(ProductPrice ProductPrice);
+	public Long postObject(ProductPrice productPrice);
 	
 }
