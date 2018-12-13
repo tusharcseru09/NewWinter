@@ -80,7 +80,7 @@ public class ProductPriceRepo implements ProductPriceDAO{
 			throw new NotAbleToUpdate("Object id and url id not matched.");
 		}
 		
-		requestedProductPrice.setProductDetails(productPrice.getProductDetails());
+		requestedProductPrice.setProductId(productPrice.getProductId());
 		requestedProductPrice.setPurchasePrice(productPrice.getPurchasePrice());
 		requestedProductPrice.setSalePrice(productPrice.getSalePrice());
 		requestedProductPrice.setActivationDate(productPrice.getActivationDate());

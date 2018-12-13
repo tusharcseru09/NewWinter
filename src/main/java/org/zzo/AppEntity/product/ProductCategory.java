@@ -17,7 +17,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "PRODUCT_CATEGORY_MAIN")
+@Table(name = "PRODUCT_CATEGORY")
 public class ProductCategory {
 	
 	
@@ -26,19 +26,17 @@ public class ProductCategory {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="hbm_ProductCategoryID")
 	private Long categoryId;
 	
+	@JsonIgnore
+	@OneToMany(mappedBy="categoryId") 
+	private List<ProductDetails> lstProductDetails = new ArrayList<ProductDetails>();
+	
 	
 	@Column(name="CATEGORY_CODE", unique = true, nullable = false)
 	@Size(min=ErrorMessages.CATEGORY_CODE_MIN_LEN, message=ErrorMessages.PRODUCT_CATETORY_CODE_SIZE)
 	private String categoryCode;
 	
-	
 	@Column(name="CATEGORY_DESC", unique = true, nullable = false)
 	@Size(min=ErrorMessages.CATEGORY_DESC_MIN_LEN, message=ErrorMessages.PRODUCT_CATETORY_DESC_SIZE)
 	private String categoryDesc;
-	
-	
-	@JsonIgnore
-	@OneToMany(mappedBy="productCategory") 
-	private List<ProductDetails> lstProductDetails = new ArrayList<ProductDetails>();
 
 }

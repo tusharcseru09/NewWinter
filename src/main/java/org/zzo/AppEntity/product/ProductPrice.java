@@ -15,7 +15,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table( name = "PRODUCT_PRICE_MAIN", uniqueConstraints = @UniqueConstraint(
+@Table( name = "MST_PRODUCT_PRICE", uniqueConstraints = @UniqueConstraint(
 		columnNames= {"PRODUCT_ID", "PURCHASE_PRICE", "SALES_PRICE", "ACTIVATION_DATE"} ) )
 public class ProductPrice {
 	
@@ -28,7 +28,7 @@ public class ProductPrice {
 	
 	@ManyToOne
 	@JoinColumn(name="PRODUCT_ID", nullable = false)
-	private ProductDetails productDetails;
+	private ProductDetails productId;
 
 	
 	@Column(name="PURCHASE_PRICE", nullable=false) 
@@ -43,7 +43,7 @@ public class ProductPrice {
 	private Date activationDate = new Date();
 
 	
-	@Column(name="USER_COMMENT")
+	@Column(name="COMMENT")
 	private String comment;
 	
 }	

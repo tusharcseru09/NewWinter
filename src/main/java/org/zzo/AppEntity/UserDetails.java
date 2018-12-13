@@ -1,5 +1,5 @@
 package org.zzo.AppEntity;
-
+/*
 import java.io.Serializable;
 import java.util.Date;
 
@@ -52,4 +52,4 @@ public class UserDetails implements Serializable{
 	@Column(name="USER_ADDRESS")
 	private String userAddress;
 
-}
+}*/

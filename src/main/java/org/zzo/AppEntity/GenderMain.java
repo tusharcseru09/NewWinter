@@ -1,5 +1,5 @@
 package org.zzo.AppEntity;
-
+/*
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,3 +23,4 @@ public class GenderMain {
 	@Column(name="GENDER")
 	private String genderName;
 }
+*/

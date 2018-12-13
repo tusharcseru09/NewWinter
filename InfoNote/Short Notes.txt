@@ -1,0 +1,5 @@
+
+POSTGRES SQL GRAPHICAL VIEW EXTRACT
+----------------------------------
+https://www.dbvis.com/features/postgresql-database-support/
+https://dbeaver.com/files/docs/wiki/er-diagrams.html

@@ -38,4 +38,8 @@ public class ErrorMessages {
 	
 	public static final String PRODUCT_PRICE_NOTNULL = "Null value not allowed";
 	
+	public static final int ORDE_TYPE_MIN_LEN = 2;
+	public static final String ORDE_TYPE_DESC_SIZE = "Character length must be " + ORDE_TYPE_MIN_LEN + " or above";;
+	
+	
 }

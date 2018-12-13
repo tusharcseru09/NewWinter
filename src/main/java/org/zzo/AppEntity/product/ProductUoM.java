@@ -17,30 +17,26 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "PRODUCT_UOM_MAIN")
+@Table(name = "PRODUCT_UOM")
 public class ProductUoM {
 	
 	
-	@Id 
-	@Column(name="UOM_ID")
+	@Id @Column(name="UOM_ID")
 	@SequenceGenerator(name="hbm_ProductUomId", sequenceName="seq_ProdUom_ID",initialValue=1, allocationSize=1 )
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="hbm_ProductUomId")
 	private Long unitId;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy="unitId")
+	private List<ProductDetails> lstProductDetails = new ArrayList<ProductDetails>();
 	
 	
 	@Column(name="UOM_KEY", unique = true, nullable = false)
 	@Size(min=ErrorMessages.UOM_KEY_MIN_LEN, message=ErrorMessages.PRODUCT_UOM_KEY_SIZE)
 	private String unitKey;
 	
-	
 	@Column(name="UOM_DESC", unique = true, nullable = false)
 	@Size(min=ErrorMessages.UOM_DESC_MIN_LEN, message=ErrorMessages.PRODUCT_UOM_DESC_SIZE)
 	private String unitDescription;
-	
-	
-	@JsonIgnore
-	@OneToMany(mappedBy="productUoM")
-	private List<ProductDetails> lstProductDetails = new ArrayList<ProductDetails>();
-	
-	
+
 }

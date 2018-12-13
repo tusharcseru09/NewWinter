@@ -85,8 +85,8 @@ public class ProductDetailsRepo implements ProductDetailsDAO{
 		requestedProductDetails.setProductCode(productDetails.getProductCode());
 		requestedProductDetails.setProductName(productDetails.getProductName());
 		requestedProductDetails.setProductDesc(productDetails.getProductDesc());
-		requestedProductDetails.setProductUoM(productDetails.getProductUoM());
-		requestedProductDetails.setProductCategory(productDetails.getProductCategory());
+		requestedProductDetails.setUnitId(productDetails.getUnitId());
+		requestedProductDetails.setCategoryId(productDetails.getCategoryId());
 		requestedProductDetails.setTaxAble(productDetails.getTaxAble());
 		requestedProductDetails.setProductComment(productDetails.getProductComment());
 	
