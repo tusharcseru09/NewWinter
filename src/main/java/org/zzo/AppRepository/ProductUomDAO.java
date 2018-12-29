@@ -1,8 +1,6 @@
 package org.zzo.AppRepository;
 
 import java.util.List;
-
-import org.zzo.AppEntity.product.ProductCategory;
 import org.zzo.AppEntity.product.ProductUoM;
 import org.zzo.ExceptionObject.NotAbleToUpdate;
 
@@ -17,5 +15,7 @@ public interface ProductUomDAO {
 	public void putObject(ProductUoM productUoM, Long unitId)  throws NotAbleToUpdate, Exception ;
 	
 	public Long postObject(ProductUoM productUoM);
+	
+	public Boolean postObjectList(List<ProductUoM> productUomList);
 	
 }

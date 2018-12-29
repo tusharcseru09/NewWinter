@@ -1,0 +1,18 @@
+[
+	{
+	"orderTypeDesc":"Purchase",
+	"stockSign": 1
+	},
+	{
+	"orderTypeDesc":"Sale",
+	"stockSign": -1
+	},
+	{
+	"orderTypeDesc":"Adjuste(+)",
+	"stockSign": 1
+	},
+	{
+	"orderTypeDesc":"Adjuste(-)",
+	"stockSign": -1
+	}
+]

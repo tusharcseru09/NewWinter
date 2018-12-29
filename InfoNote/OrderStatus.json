@@ -1,0 +1,62 @@
+<!--
+	Request -> Assigned | Cancel
+	Assigned -> Active | Active But Paused
+	Active -> Completed | Cancel
+	Active But Paused -> Completed | Cancel
+-->
+[
+	{
+		"lifeCycle":"Order",
+		"parentStatus": "Request",
+		"childStatus": "Request",
+		"statusColor": "Yellow"
+	},
+	{
+		"lifeCycle":"Order",
+		"parentStatus": "Request",
+		"childStatus": "Assigned",
+		"statusColor": "Light Grey"
+	},
+	{
+		"lifeCycle":"Order",
+		"parentStatus": "Request",
+		"childStatus": "Cancel",
+		"statusColor": "Red"
+	},	
+	{
+		"lifeCycle":"Order",
+		"parentStatus": "Assigned",
+		"childStatus": "Active",
+		"statusColor": "Blue"
+	},
+	{
+		"lifeCycle":"Order",
+		"parentStatus": "Assigned",
+		"childStatus": "Active But Paused",
+		"statusColor": "Lighter Shade of Blue"
+	},
+	{
+		"lifeCycle":"Order",
+		"parentStatus": "Active",
+		"childStatus": "Completed",
+		"statusColor": "Blue"
+	},
+		{
+		"lifeCycle":"Order",
+		"parentStatus": "Active",
+		"childStatus": "Cancel",
+		"statusColor": "Red"
+	},
+	{
+		"lifeCycle":"Order",
+		"parentStatus": "Active But Paused",
+		"childStatus": "Completed",
+		"statusColor": "Blue"
+	},
+	{
+		"lifeCycle":"Order",
+		"parentStatus": "Active But Paused",
+		"childStatus": "Cancel",
+		"statusColor": "Red"
+	}
+]

@@ -35,8 +35,6 @@ public class OrderType {
 	@OneToMany(mappedBy="orderTypeId", cascade=CascadeType.ALL)
 	private List<ProductOrder> lstProductOrder = new ArrayList<ProductOrder>();
 	
-	
-	
 	@Column(name="ORDE_TYPE_DESC", unique = true, nullable = false)
 	@Size(min=ErrorMessages.ORDE_TYPE_MIN_LEN, message=ErrorMessages.ORDE_TYPE_DESC_SIZE)
 	private String orderTypeDesc;

@@ -2,12 +2,9 @@ package org.zzo.AppRepository;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.transaction.Transactional;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.zzo.AppEntity.product.ProductUoM;
@@ -19,7 +16,6 @@ public class ProductUomRepo implements ProductUomDAO {
 	@Autowired
 	public SessionFactory sessionFactory;
 	
-	//RETRIVE ALL
 	@Override
 	@Transactional
 	public List<ProductUoM> getObjectList() {
@@ -37,7 +33,6 @@ public class ProductUomRepo implements ProductUomDAO {
 		return lstProductUoM;
 	}
 	
-	//RETRIVE SINGLE
 	@Override
 	@Transactional
 	public ProductUoM getObject(Long Id) {
@@ -47,7 +42,6 @@ public class ProductUomRepo implements ProductUomDAO {
 		return prodUom;
 	}
 
-	//INSERT
 	@Override
 	@Transactional
 	public Long postObject(ProductUoM productUoM) {
@@ -57,21 +51,22 @@ public class ProductUomRepo implements ProductUomDAO {
 		return generatedId;
 	}
 
-	//DELETE
 	@Override
 	@Transactional
 	public Long deleteObject(Long Id) throws  Exception {
-		String queryStr = "delete from ProductUoM pu where pu.unitId=:unitId";
+
+		Long result= -1L;
+		ProductUoM productUoM = new ProductUoM();
 		Session session = sessionFactory.getCurrentSession();
-		Query query =  session.createQuery(queryStr);
-		query.setParameter("unitId", Id);
-		long result = query.executeUpdate();
-		System.out.println(result + " row deleted.");
-		return result;
+		productUoM = session.get(ProductUoM.class, Id);
+		
+		if(productUoM != null) {
+			result = productUoM.getUnitId();
+			session.delete(productUoM);
+		}
+		return result != -1 ? result : -1L;
 	}
 
-
-	//UPDATE
 	@Override
 	@Transactional
 	public void putObject(ProductUoM productUoM, Long unitId) throws NotAbleToUpdate, Exception {
@@ -89,6 +84,23 @@ public class ProductUomRepo implements ProductUomDAO {
 		uomObj.setUnitKey(productUoM.getUnitKey()) ;
 		uomObj.setUnitDescription(productUoM.getUnitDescription());
 		session.persist(uomObj);
+	}
+
+	@Override
+	@Transactional
+	public Boolean postObjectList(List<ProductUoM> productUomList) {
+		Long count = 0L;		
+		for (ProductUoM productUom : productUomList) {
+			
+			if (productUom != null) {
+				this.postObject(productUom);
+				count++;
+			}
+		}
+		if (count == productUomList.size())
+			return true;
+		else 
+			return false;
 	}
 
 }

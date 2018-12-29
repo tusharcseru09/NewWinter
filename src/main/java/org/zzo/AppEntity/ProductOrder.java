@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import org.zzo.AppEntity.order.OrderHeader;
+import org.zzo.AppEntity.order.OrderStatus;
 import org.zzo.AppEntity.order.OrderType;
 import org.zzo.AppEntity.product.ProductDetails;
 import lombok.Data;
@@ -38,6 +39,10 @@ public class ProductOrder implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="ORDER_TYPE", nullable=false)
 	private OrderType orderTypeId;
+	
+	@ManyToOne
+	@JoinColumn(name="ORDER_STATUS", nullable=false)
+	private OrderStatus statusId;
 	
 	@ManyToOne
 	@JoinColumn(name="PARTNER_ID", nullable=false)

@@ -2,12 +2,9 @@ package org.zzo.AppRepository;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.transaction.Transactional;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.zzo.AppEntity.product.ProductCategory;
@@ -20,7 +17,6 @@ public class ProductCategoryRepo implements ProductCategoryDAO{
 	@Autowired
 	public SessionFactory sessionFactory;
 
-	//RETRIVE ALL
 	@Override
 	@Transactional
 	public List<ProductCategory> getObjectList() {
@@ -38,8 +34,6 @@ public class ProductCategoryRepo implements ProductCategoryDAO{
 		return lstProductCategory;
 	}
 
-	
-	//RETRIVE SINGLE
 	@Override
 	@Transactional
 	public ProductCategory getObject(Long Id) {
@@ -49,8 +43,6 @@ public class ProductCategoryRepo implements ProductCategoryDAO{
 		return productCategory;
 	}
 
-	
-	//INSERT
 	@Override
 	@Transactional
 	public Long postObject(ProductCategory productCategory) {
@@ -60,7 +52,6 @@ public class ProductCategoryRepo implements ProductCategoryDAO{
 		return createdId;
 	}
 
-	//UPDATE
 	@Override
 	@Transactional
 	public void putObject(ProductCategory productCategory, Long categoryId) throws NotAbleToUpdate, Exception {
@@ -80,24 +71,38 @@ public class ProductCategoryRepo implements ProductCategoryDAO{
 		session.persist(catObj);	
 	}
 	
-	//DELETE
 	@Override
 	@Transactional
 	public Long deleteObject(Long Id) throws  Exception {
 		
-		String queryStr = "delete from ProductCategory pc where pc.categoryId=:categoryId";
+		Long result= -1L;
+		ProductCategory productCategory = new ProductCategory();
 		Session session = sessionFactory.getCurrentSession();
-		Query query =  session.createQuery(queryStr);
-		query.setParameter("categoryId", Id);
-		long result = query.executeUpdate();
-		System.out.println(result + " row deleted.");
-		return result;
+		productCategory = session.get(ProductCategory.class, Id);
+		
+		if(productCategory != null) {
+			result = productCategory.getCategoryId();
+			session.delete(productCategory);
+		}
+		return result != -1 ? result : -1L;
 	}
 
-	
 
-
-	
-
+	@Override
+	@Transactional
+	public Boolean postObjectList(List<ProductCategory> categoryList) {
+		Long count = 0L;		
+		for (ProductCategory productCategory : categoryList) {
+			
+			if (productCategory != null) {
+				this.postObject(productCategory);
+				count++;
+			}
+		}
+		if (count == categoryList.size())
+			return true;
+		else 
+			return false;
+	}
 
 }

@@ -1,4 +1,5 @@
-package org.zzo.AppRepository;
+
+/*package org.zzo.AppRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,3 +79,4 @@ public class ProductPriceTableRepo {
 	}
 	
 }
+*/
