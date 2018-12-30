@@ -1,36 +1,578 @@
 [
-
-{ 
-"productCode": "EDMEN1", 
-"productName": "New Brand Shirt-1", 
-"productDesc": "Formal T Shirt-1",
-"productUoM": { "unitId": 1 },
-"productCategory": { "categoryId": 1 },
-"taxAble": true, 
-"productComment": "no comments"
-},
-
-{ 
-"productCode": "EDMEN2", 
-"productName": "New Brand Shirt-2", 
-"productDesc": "Formal T Shirt-2",
-"productUoM": { "unitId": 2 },
-"productCategory": { "categoryId": 2 },
-"productComment": "no comments"
-},
-
-{ 
-"productCode": "EDMEN3", 
-"productName": "New Brand Shirt-3", 
-"productDesc": "Formal T Shirt-3",
-"productUoM": { "unitId": 3 },
-"productCategory": { "categoryId": 3 },
-"taxAble": true, 
-"productComment": "no comments"
-}
-
-
+	{
+		"productCode": "BMGR",
+		"productName": "Boys M Green",
+		"productDesc": "Boys Shirt Medium Size Green Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 8 },
+		"taxAble": false
+	},
+	{
+		"productCode": "MMOR",
+		"productName": "Men M Orange",
+		"productDesc": "Men Shirt Medium Size Orange Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 2 },
+		"taxAble": true
+	},
+	{
+		"productCode": "BSOR",
+		"productName": "Boys S Orange",
+		"productDesc": "Boys Shirt Small Size Orange Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 7 },
+		"taxAble": true
+	},
+	{
+		"productCode": "BMRE",
+		"productName": "Boys M Red",
+		"productDesc": "Boys Shirt Medium Size Red Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 8 },
+		"taxAble": true
+	},
+	{
+		"productCode": "MMYE",
+		"productName": "Men M Yellow",
+		"productDesc": "Men Shirt Medium Size Yellow Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 2 },
+		"taxAble": true
+	},
+	{
+		"productCode": "GSRE",
+		"productName": "Girls S Red",
+		"productDesc": "Girls Shirt Small Size Red Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 10 },
+		"taxAble": true
+	},
+	{
+		"productCode": "MLOR",
+		"productName": "Men L Orange",
+		"productDesc": "Men Shirt Large Size Orange Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 3 },
+		"taxAble": true
+	},
+	{
+		"productCode": "MLWH",
+		"productName": "Men L White",
+		"productDesc": "Men Shirt Large Size White Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 3 },
+		"taxAble": true
+	},
+	{
+		"productCode": "MSBL",
+		"productName": "Men S Blue",
+		"productDesc": "Men Shirt Small Size Blue Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 1 },
+		"taxAble": false
+	},
+	{
+		"productCode": "MSGR",
+		"productName": "Men S Green",
+		"productDesc": "Men Shirt Small Size Green Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 1 },
+		"taxAble": true
+	},
+	{
+		"productCode": "GLWH",
+		"productName": "Girls L White",
+		"productDesc": "Girls Shirt Large Size White Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 12 },
+		"taxAble": true
+	},
+	{
+		"productCode": "BLBL",
+		"productName": "Boys L Blue",
+		"productDesc": "Boys Shirt Large Size Blue Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 9 },
+		"taxAble": true
+	},
+	{
+		"productCode": "GSWH",
+		"productName": "Girls S White",
+		"productDesc": "Girls Shirt Small Size White Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 10 },
+		"taxAble": true
+	},
+	{
+		"productCode": "BLGR",
+		"productName": "Boys L Green",
+		"productDesc": "Boys Shirt Large Size Green Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 9 },
+		"taxAble": true
+	},
+	{
+		"productCode": "GMWH",
+		"productName": "Girls M White",
+		"productDesc": "Girls Shirt Medium Size White Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 11 },
+		"taxAble": true
+	},
+	{
+		"productCode": "GMYE",
+		"productName": "Girls M Yellow",
+		"productDesc": "Girls Shirt Medium Size Yellow Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 11 },
+		"taxAble": true
+	},
+	{
+		"productCode": "WSYE",
+		"productName": "Women S Yellow",
+		"productDesc": "Women Shirt Small Size Yellow Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 4 },
+		"taxAble": true
+	},
+	{
+		"productCode": "WSWH",
+		"productName": "Women S White",
+		"productDesc": "Women Shirt Small Size White Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 4 },
+		"taxAble": true
+	},
+	{
+		"productCode": "WSRE",
+		"productName": "Women S Red",
+		"productDesc": "Women Shirt Small Size Red Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 4 },
+		"taxAble": true
+	},
+	{
+		"productCode": "WSOR",
+		"productName": "Women S Orange",
+		"productDesc": "Women Shirt Small Size Orange Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 4 },
+		"taxAble": true
+	},
+	{
+		"productCode": "WSGR",
+		"productName": "Women S Green",
+		"productDesc": "Women Shirt Small Size Green Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 4 },
+		"taxAble": true
+	},
+	{
+		"productCode": "WSBL",
+		"productName": "Women S Blue",
+		"productDesc": "Women Shirt Small Size Blue Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 4 },
+		"taxAble": true
+	},
+	{
+		"productCode": "WMYE",
+		"productName": "Women M Yellow",
+		"productDesc": "Women Shirt Medium Size Yellow Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 5 },
+		"taxAble": true
+	},
+	{
+		"productCode": "WMWH",
+		"productName": "Women M White",
+		"productDesc": "Women Shirt Medium Size White Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 5 },
+		"taxAble": true
+	},
+	{
+		"productCode": "WMRE",
+		"productName": "Women M Red",
+		"productDesc": "Women Shirt Medium Size Red Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 5 },
+		"taxAble": true
+	},
+	{
+		"productCode": "WMOR",
+		"productName": "Women M Orange",
+		"productDesc": "Women Shirt Medium Size Orange Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 5 },
+		"taxAble": true
+	},
+	{
+		"productCode": "WMGR",
+		"productName": "Women M Green",
+		"productDesc": "Women Shirt Medium Size Green Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 5 },
+		"taxAble": true
+	},
+	{
+		"productCode": "WMBL",
+		"productName": "Women M Blue",
+		"productDesc": "Women Shirt Medium Size Blue Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 5 },
+		"taxAble": true
+	},
+	{
+		"productCode": "WLYE",
+		"productName": "Women L Yellow",
+		"productDesc": "Women Shirt Large Size Yellow Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 6 },
+		"taxAble": true
+	},
+	{
+		"productCode": "WLWH",
+		"productName": "Women L White",
+		"productDesc": "Women Shirt Large Size White Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 6 },
+		"taxAble": true
+	},
+	{
+		"productCode": "WLRE",
+		"productName": "Women L Red",
+		"productDesc": "Women Shirt Large Size Red Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 6 },
+		"taxAble": true
+	},
+	{
+		"productCode": "WLOR",
+		"productName": "Women L Orange",
+		"productDesc": "Women Shirt Large Size Orange Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 6 },
+		"taxAble": true
+	},
+	{
+		"productCode": "WLGR",
+		"productName": "Women L Green",
+		"productDesc": "Women Shirt Large Size Green Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 6 },
+		"taxAble": true
+	},
+	{
+		"productCode": "WLBL",
+		"productName": "Women L Blue",
+		"productDesc": "Women Shirt Large Size Blue Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 6 },
+		"taxAble": true
+	},
+	{
+		"productCode": "MSYE",
+		"productName": "Men S Yellow",
+		"productDesc": "Men Shirt Small Size Yellow Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 1 },
+		"taxAble": true
+	},
+	{
+		"productCode": "MSWH",
+		"productName": "Men S White",
+		"productDesc": "Men Shirt Small Size White Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 1 },
+		"taxAble": true
+	},
+	{
+		"productCode": "MSRE",
+		"productName": "Men S Red",
+		"productDesc": "Men Shirt Small Size Red Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 1 },
+		"taxAble": true
+	},
+	{
+		"productCode": "MSOR",
+		"productName": "Men S Orange",
+		"productDesc": "Men Shirt Small Size Orange Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 1 },
+		"taxAble": true
+	},
+	{
+		"productCode": "MMRE",
+		"productName": "Men M Red",
+		"productDesc": "Men Shirt Medium Size Red Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 2 },
+		"taxAble": true
+	},
+	{
+		"productCode": "MMGR",
+		"productName": "Men M Green",
+		"productDesc": "Men Shirt Medium Size Green Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 2 },
+		"taxAble": true
+	},
+	{
+		"productCode": "MMBL",
+		"productName": "Men M Blue",
+		"productDesc": "Men Shirt Medium Size Blue Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 2 },
+		"taxAble": true
+	},
+	{
+		"productCode": "MLYE",
+		"productName": "Men L Yellow",
+		"productDesc": "Men Shirt Large Size Yellow Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 3 },
+		"taxAble": true
+	},
+	{
+		"productCode": "MLRE",
+		"productName": "Men L Red",
+		"productDesc": "Men Shirt Large Size Red Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 3 },
+		"taxAble": true
+	},
+	{
+		"productCode": "MLGR",
+		"productName": "Men L Green",
+		"productDesc": "Men Shirt Large Size Green Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 3 },
+		"taxAble": true
+	},
+	{
+		"productCode": "MLBL",
+		"productName": "Men L Blue",
+		"productDesc": "Men Shirt Large Size Blue Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 3 },
+		"taxAble": true
+	},
+	{
+		"productCode": "GSYE",
+		"productName": "Girls S Yellow",
+		"productDesc": "Girls Shirt Small Size Yellow Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 10 },
+		"taxAble": true
+	},
+	{
+		"productCode": "GSOR",
+		"productName": "Girls S Orange",
+		"productDesc": "Girls Shirt Small Size Orange Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 10 },
+		"taxAble": true
+	},
+	{
+		"productCode": "GSGR",
+		"productName": "Girls S Green",
+		"productDesc": "Girls Shirt Small Size Green Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 10 },
+		"taxAble": true
+	},
+	{
+		"productCode": "GSBL",
+		"productName": "Girls S Blue",
+		"productDesc": "Girls Shirt Small Size Blue Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 10 },
+		"taxAble": true
+	},
+	{
+		"productCode": "GMRE",
+		"productName": "Girls M Red",
+		"productDesc": "Girls Shirt Medium Size Red Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 11 },
+		"taxAble": true
+	},
+	{
+		"productCode": "GMOR",
+		"productName": "Girls M Orange",
+		"productDesc": "Girls Shirt Medium Size Orange Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 11 },
+		"taxAble": true
+	},
+	{
+		"productCode": "GMGR",
+		"productName": "Girls M Green",
+		"productDesc": "Girls Shirt Medium Size Green Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 11 },
+		"taxAble": true
+	},
+	{
+		"productCode": "GMBL",
+		"productName": "Girls M Blue",
+		"productDesc": "Girls Shirt Medium Size Blue Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 11 },
+		"taxAble": true
+	},
+	{
+		"productCode": "GLYE",
+		"productName": "Girls L Yellow",
+		"productDesc": "Girls Shirt Large Size Yellow Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 12 },
+		"taxAble": true
+	},
+	{
+		"productCode": "GLRE",
+		"productName": "Girls L Red",
+		"productDesc": "Girls Shirt Large Size Red Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 12 },
+		"taxAble": true
+	},
+	{
+		"productCode": "GLOR",
+		"productName": "Girls L Orange",
+		"productDesc": "Girls Shirt Large Size Orange Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 12 },
+		"taxAble": true
+	},
+	{
+		"productCode": "GLGR",
+		"productName": "Girls L Green",
+		"productDesc": "Girls Shirt Large Size Green Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 12 },
+		"taxAble": true
+	},
+	{
+		"productCode": "GLBL",
+		"productName": "Girls L Blue",
+		"productDesc": "Girls Shirt Large Size Blue Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 12 },
+		"taxAble": true
+	},
+	{
+		"productCode": "BSYE",
+		"productName": "Boys S Yellow",
+		"productDesc": "Boys Shirt Small Size Yellow Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 7 },
+		"taxAble": true
+	},
+	{
+		"productCode": "BSWH",
+		"productName": "Boys S White",
+		"productDesc": "Boys Shirt Small Size White Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 7 },
+		"taxAble": true
+	},
+	{
+		"productCode": "BSRE",
+		"productName": "Boys S Red",
+		"productDesc": "Boys Shirt Small Size Red Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 7 },
+		"taxAble": true
+	},
+	{
+		"productCode": "BSGR",
+		"productName": "Boys S Green",
+		"productDesc": "Boys Shirt Small Size Green Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 7 },
+		"taxAble": true
+	},
+	{
+		"productCode": "BSBL",
+		"productName": "Boys S Blue",
+		"productDesc": "Boys Shirt Small Size Blue Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 7 },
+		"taxAble": true
+	},
+	{
+		"productCode": "BMYE",
+		"productName": "Boys M Yellow",
+		"productDesc": "Boys Shirt Medium Size Yellow Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 8 },
+		"taxAble": true
+	},
+	{
+		"productCode": "BMWH",
+		"productName": "Boys M White",
+		"productDesc": "Boys Shirt Medium Size White Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 8 },
+		"taxAble": true
+	},
+	{
+		"productCode": "BMOR",
+		"productName": "Boys M Orange",
+		"productDesc": "Boys Shirt Medium Size Orange Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 8 },
+		"taxAble": true
+	},
+	{
+		"productCode": "BMBL",
+		"productName": "Boys M Blue",
+		"productDesc": "Boys Shirt Medium Size Blue Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 8 },
+		"taxAble": true
+	},
+	{
+		"productCode": "BLOR",
+		"productName": "Boys L Orange",
+		"productDesc": "Boys Shirt Large Size Orange Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 9 },
+		"taxAble": true
+	},
+	{
+		"productCode": "BLRE",
+		"productName": "Boys L Red",
+		"productDesc": "Boys Shirt Large Size Red Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 9 },
+		"taxAble": true
+	},
+	{
+		"productCode": "BLWH",
+		"productName": "Boys L White",
+		"productDesc": "Boys Shirt Large Size White Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 9 },
+		"taxAble": true
+	},
+	{
+		"productCode": "BLYE",
+		"productName": "Boys L Yellow",
+		"productDesc": "Boys Shirt Large Size Yellow Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 9 },
+		"taxAble": true
+	},
+	{
+		"productCode": "MMWH",
+		"productName": "Men M White",
+		"productDesc": "Men Shirt Medium Size White Color ",
+		"unitId": { "unitId": 1 },
+		"categoryId": { "categoryId": 2 },
+		"taxAble": true
+	}
 ]
-
-
-

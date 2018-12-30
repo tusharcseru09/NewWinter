@@ -92,5 +92,23 @@ public class ProductDetailsRepo implements ProductDetailsDAO{
 	
 		session.persist(requestedProductDetails);
 	}
+	
+	@Override
+	@Transactional
+	public Boolean postObjectList(List<ProductDetails> productList) {
+		
+		Long count = 0L;		
+		for (ProductDetails productDetails : productList) {
+			
+			if (productDetails != null) {
+				this.postObject(productDetails);
+				count++;
+			}
+		}
+		if (count == productList.size())
+			return true;
+		else 
+			return false;
+	}
 
 }

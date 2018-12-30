@@ -89,4 +89,22 @@ public class ProductDetailsCtrl {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}	
 
+	
+	@RequestMapping(value="/products/dataload", method=RequestMethod.POST)
+	public ResponseEntity<Object> postProductObjList(@RequestBody @Valid List<ProductDetails> productList, BindingResult bindingResult) {
+		
+		Map<String , String> errorMap;
+		if(bindingResult.hasErrors()) {
+			errorMap = new HashMap<>();
+			for (FieldError error : bindingResult.getFieldErrors()) {
+				errorMap.put(error.getField(), error.getDefaultMessage());
+			}
+			return new ResponseEntity<>(errorMap, HttpStatus.NOT_ACCEPTABLE);	
+		}
+		
+		if (productDetailsService.postProductDetailsObjectList(productList))
+			return new ResponseEntity<> (HttpStatus.OK);
+		else
+			return new ResponseEntity<> (HttpStatus.CONFLICT);
+	}
 }

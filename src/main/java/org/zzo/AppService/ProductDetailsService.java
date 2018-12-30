@@ -42,4 +42,7 @@ public class ProductDetailsService {
 		 productDetailsRepo.putObject(productDetails, productID);
 	}	
 	
+	public Boolean postProductDetailsObjectList(List<ProductDetails> productList){
+		return productDetailsRepo.postObjectList(productList);
+	}
 }

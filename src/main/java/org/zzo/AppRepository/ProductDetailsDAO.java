@@ -17,4 +17,5 @@ public interface ProductDetailsDAO {
 	
 	public Long postObject(ProductDetails productDetails);
 	
+	public Boolean postObjectList(List<ProductDetails> productList);
 }
